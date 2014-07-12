@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Geometria-Light';
+  src: url("/fonts/Geometria-Light.eot?") format("eot"), url("/fonts/Geometria-Light.otf") format("opentype"), url("/fonts/Geometria-Light.woff") format("woff"), url("/fonts/Geometria-Light.ttf") format("truetype"), url("/fonts/Geometria-Light.svg#Geometria-Light") format("svg"); }
+html,
+body {
+  height: 100%;
+  font-family: "Geometria-Light", "Helvetica Neue", Arial, "Helvetica CY", "Nimbus Sans L", sans-serif; }
+
+.container {
+  height: 100%;
+  font-size: 15px;
+  color: #AAA; }
+
+.plate {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  margin: auto;
+  width: 400px;
+  height: 190px;
+  background-color: #123;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 0px 31px 0px #123;
+  -moz-box-shadow: 0px 0px 5px 0px #7171A7;
+  box-shadow: 0px 0px 19px 0px #123;
+  border: 3px dashed #CFCFCF; }
+  .plate::after {
+    content: "";
+    background-image: url(/img/daffy_duck.jpg);
+    position: absolute;
+    width: 197px;
+    top: -8px;
+    left: 405px;
+    z-index: -1;
+    height: 200px;
+    background-repeat: no-repeat; }
+  .plate.hover {
+    background-color: #FFF9EB; }
+    .plate.hover::after {
+      background-position: -207px;
+      width: 178px; }
+  .plate.drop::after {
+    background-position: -395px;
+    width: 111px; }
+  .plate input#userFile {
+    display: block !important;
+    width: 400px !important;
+    height: 190px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    position: absolute;
+    top: 0; }
+
+#msg {
+  margin: 76px 0;
+  text-align: center;
+  font-size: 31px; }
+  #msg a {
+    font-size: 21px;
+    font-family: Helvetica, serif; }
+  #msg.progress {
+    background-image: url(/img/ajaxLoad.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 100%;
+    opacity: 0.7; }

@@ -1,0 +1,156 @@
+$small: 600px;
+
+@mixin respond-to($media) {
+  @if $media == small-screens {
+    @media only screen and (max-width: $small) { @content; }
+  }
+}
+
+@font-face {
+  font-family: 'Geometria-Light';
+  src: url('/fonts/Geometria-Light.eot?') format('eot'), 
+       url('/fonts/Geometria-Light.otf')  format('opentype'),
+       url('/fonts/Geometria-Light.woff') format('woff'), 
+       url('/fonts/Geometria-Light.ttf')  format('truetype'),
+       url('/fonts/Geometria-Light.svg#Geometria-Light') format('svg');
+}
+
+html {
+  height: 100%;
+  text-rendering: optimizeLegibility;
+  @include respond-to(small-screens) {
+    height: auto;
+  }
+}
+
+body {
+  height: 100%;
+  font-family: "Geometria-Light", "Helvetica Neue", Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+  @include respond-to(small-screens) {
+    height: auto;
+  }
+}
+
+.dd-btn {
+  padding: 8px;
+  display: inline-block;
+  border: 2px solid #839199;
+  border-radius: 5px;
+  color: #839199;
+  transition: color .3s, border-color .3s;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+    border-color: #C8CCCE;
+    color: #C8CCCE;
+  }
+}
+
+#dd {
+  height: 100%;
+  overflow: hidden;
+  @include respond-to(small-screens) {
+    overflow: auto;
+    height: auto;
+  }
+}
+
+#dd_doc {
+  width: 50%;
+  background-color: #475155;
+  height: 100%;
+  float: left;
+  position: relative;
+  @include respond-to(small-screens) {
+    width: 100%;
+    height: auto;
+  }
+
+  #dd_doc-tools {
+    margin: 19px auto;
+    max-width: 800px;
+    background-color: #475155;
+    text-align: center;
+    height: 40px;
+
+    #fileName-wrapper {
+      max-width: 600px;
+      display: inline-block;
+      line-height: 40px;
+      max-height: 40px;
+      overflow: hidden;
+
+      #fileName {
+        display: inline-block;
+        color: white;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+#dd_vars {
+  height: 100%;
+  width: 50%;
+  float: right;
+  vertical-align: top;
+  @include respond-to(small-screens) {
+    width: 100%;
+    height: auto;
+  }
+
+  #palette {
+    padding: 10px 20px;
+
+    .docVarAdd {
+      padding: 20px 60px 30px;
+      background-color: #F8F8FF;
+      opacity: 0;
+    }
+  }
+}
+
+table.variablesTbl > tbody > tr > td {
+  vertical-align: middle;
+}
+
+#document-wrap {
+  position: absolute;
+  top: 78px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  text-align: center;
+  padding-bottom: 40px;
+  @include respond-to(small-screens) {
+    position: static;
+  }
+
+  #document {
+    position: relative;
+    display: inline-block;
+    max-width: 800px;
+    padding: 80px 60px 80px 110px;
+    background-color: white;
+
+    mark {
+      background-color: #D4EBFF;
+
+      .varForm {
+        position: absolute;
+        left: 10px;
+        padding: 2px 5px;
+        margin-top: -3px;
+        color: white;
+        background-color: #D2691E;
+        font-style: italic;
+        font-weight: normal;
+        line-height: 16px;
+        font-size: 16px;
+        text-indent: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daffy DOC</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="dd">
+    <div id="dd_doc">
+      <div id="dd_doc-tools">
+      </div>
+      <div id="document-wrap">
+      </div>
+    </div>
+    <div id="dd_vars">
+      <div id="palette"></div>
+    </div>
+  </div>
+  <script>var settings = {$settings}</script>
+  <script src="//code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js" type="text/javascript"></script>
+  <script src="/js/app.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+
+  <script type="text/template" id="docVars">
+    <table class="table variablesTbl">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Old Text</th>
+          <th>Value</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="docVar">
+    <% if (!editing) { %>
+      <tr>
+        <td><%=name%></td>
+        <td><% if (old_text.length > 60) { %><%=old_text.substring(0,60)+'...'%><% } else { %><%=old_text%><% } %>
+        </td>
+        <td>
+            <% if (value.length > 60) { %><%=value.substring(0,60)+'...'%><% } else { %><%=value%><% } %>
+        </td>
+        <td>
+          <a class="btn btn-danger btn-sm pull-right toggleEditing">Change</a>
+        </td>
+      </tr>
+    <% } else { %>
+      <tr>
+        <td colspan="4">
+          <div class="docVarAdd clearfix">
+            <h2>Variable <% if (saved) { %>editing<% } else { %>adding<% } %></h2>
+            <p>Name: <b><%=name%></b></p>
+            <p>Old value: <b><%=old_text%></b></p>
+            <p>New value:</p>
+            <p><textarea class="form-control newValue"><%=value%></textarea></p>
+            <span class="btn btn-default pull-left toggleEditing">Cancel</span>
+            <span class="btn btn-success pull-right saveVar">Save</span>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </script>
+
+  <script type="text/template" id="VarOnDoc"><span class="varForm"><%=name%></span><% if (value.length > 0) { %><%=value%><% } else { %><%=old_text%><% } %></script>
+
+  <script type="text/template" id="doc">
+    <div id="document">
+      <% if (html.length > 0) { %>
+        <%=html%>
+      <% } else { %>
+        <p class="text-center">Document is loading ...</p>
+      <% } %>
+    </div>
+  </script>
+
+  <script type="text/template" id="doc-tools">
+    <span class="dd-btn pull-left" id="doc-download">Download</span>
+    <div id="fileName-wrapper">
+      <div id="fileName">"<%=fileName%>"</div>
+    </div>
+    <span class="dd-btn pull-right" id="doc-change">Change</span>
+  </script>
+
+</body>
+</html>
